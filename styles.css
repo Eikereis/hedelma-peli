@@ -1,0 +1,89 @@
+body {
+    font-family:Verdana, Tahoma, sans-serif;
+    background-color: #e7e7e7;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 3em;
+}
+
+/* Rahat ja panos */
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#balance {
+    font-weight: bold;
+}
+
+/* Pelin hallintanapit */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 8px;
+    border: none;
+    border-radius: 300px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+input[type="number"] {
+    padding: 5px;
+    font-size: 1em;
+    width: 60px;
+    margin: 5px;
+}
+
+/* Rullat */
+.slot-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.reel {
+    font-size: 3em;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    line-height: 60px;
+    background-color: #ffffff;
+    margin: 0 10px;
+}
+
+.reel:hover {
+    background-color: #f0f0f0;
+}
+
+/* Lukitusnapit */
+button[id^="lock"] {
+    background-color: #f44336;
+}
+
+button[id^="lock"]:disabled {
+    background-color: #ccc;
+}
+
+#status, #voitto {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #333;
+}
