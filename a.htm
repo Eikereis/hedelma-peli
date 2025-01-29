@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Hedelmäpeli</title>
-</head>
-<body>
-    <h1>Hedelmäpeli</h1>
-    <p>Rahaa: <span id="balance">100</span>€</p>
-    
-    <div>
-        <label for="bet">Panos: </label>
-        <input type="number" id="bet" min="1" value="1" />
-        <button onclick="aseta_panos()">Muuta Panos</button>
-        <br>
-        <button id="play" onclick="pelaa()">Pelaa</button>
-    </div>
-    <div class="slot-container">
-        <div class="reel" id="reel1">?</div>
-        <div class="reel" id="reel2">?</div>
-        <div class="reel" id="reel3">?</div>
-        <div class="reel" id="reel4">?</div>
-    </div>
-    
-    <div>
-        <button id="lock1" onclick="lukitus(1)" disabled>Lukitse rulla 1</button>
-        <button id="lock2" onclick="lukitus(2)" disabled>Lukitse rulla 2</button>
-        <button id="lock3" onclick="lukitus(3)" disabled>Lukitse rulla 3</button>
-        <button id="lock4" onclick="lukitus(4)" disabled>Lukitse rulla 4</button>
-    </div>
-    
-    <p id="status"></p>
-    <p id="voitto"></p>
-    <script src="main.js">
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Hedelmäpeli</title>
+    </head>
+    <body>
+        <h1>Hedelmäpeli</h1>
+        <p>Rahaa: <span id="balance">100</span>€</p>
+            
+        <div>
+            <label for="bet">Panos: </label>
+            <input type="number" id="bet" min="1" value="1" />
+            <button onclick="asetaPanos()">Muuta Panos</button>
+            <br>
+            <button id="play" onclick="pelaa()">Pelaa</button>
+        </div>
+        <div class="slot-container">
+            <div class="reel" id="reel1">?</div>
+            <div class="reel" id="reel2">?</div>
+            <div class="reel" id="reel3">?</div>
+            <div class="reel" id="reel4">?</div>
+        </div>
+        
+        <div>
+            <button id="lock1" onclick="lukitus(1)" disabled>Lukitse rulla 1</button>
+            <button id="lock2" onclick="lukitus(2)" disabled>Lukitse rulla 2</button>
+            <button id="lock3" onclick="lukitus(3)" disabled>Lukitse rulla 3</button>
+            <button id="lock4" onclick="lukitus(4)" disabled>Lukitse rulla 4</button>
+        </div>
+            
+        <p id="status"></p>
+        <p id="voitto"></p>
+
+        <div class="infopanos">
+            <p>🍒🍒🍒🍒 = Panos * 3</p>
+            <p>🍐🍐🍐🍐 = Panos * 4</p>
+            <p>🍉🍉🍉🍉 = Panos * 5</p>
+            <p>🍎🍎🍎🍎 = Panos * 6</p>
+            <p>7️⃣7️⃣7️⃣7️⃣ = Panos * 10</p>
+        </div>
+
+            
+        <script src="main.js">
+        </script>
+    </body>
 </html>

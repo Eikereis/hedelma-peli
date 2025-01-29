@@ -1,16 +1,22 @@
+
+* {
+    box-sizing: border-box; /* Sisällyttää paddingin ja borderin kokoon */
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family:Verdana, Tahoma, sans-serif;
+    font-family: 'Verdana', Tahoma, sans-serif;
     background-color: #e7e7e7;
     color: #333;
-    margin: 0;
     padding: 20px;
     text-align: center;
 }
 
 h1 {
-    text-align: center;
-    color: #4CAF50;
+    color: #166e19;
     font-size: 3em;
+    margin-bottom: 20px;
 }
 
 /* Rahat ja panos */
@@ -25,15 +31,19 @@ p {
 
 /* Pelin hallintanapit */
 button {
-    background-color: #4CAF50;
+    background-color: #166e19;
     color: white;
-    padding: 10px 20px;
-    font-size: 1em;
-    margin: 8px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    margin: 10px;
     border: none;
-    border-radius: 300px;
+    border-radius: 50px; 
     cursor: pointer;
-    justify-content: center;
+    transition: background-color 0.3s ease; 
+}
+
+button:hover {
+    background-color: #145c14;
 }
 
 button:disabled {
@@ -42,10 +52,12 @@ button:disabled {
 }
 
 input[type="number"] {
-    padding: 5px;
-    font-size: 1em;
-    width: 60px;
-    margin: 5px;
+    padding: 10px;
+    font-size: 1.2em;
+    width: 80px; 
+    margin: 10px;
+    border: 2px solid #166e19;
+    border-radius: 5px;
 }
 
 /* Rullat */
@@ -53,23 +65,25 @@ input[type="number"] {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-
 }
 
 .reel {
     font-size: 3em;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     text-align: center;
-    border: 2px solid #4CAF50;
+    border: 2px solid #166e19;
     border-radius: 10px;
-    line-height: 60px;
-    background-color: #ffffff;
-    margin: 0 10px;
+    line-height: 70px;
+    background-color: #fff;
+    margin: 0 15px;
+    padding-right: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .reel:hover {
     background-color: #f0f0f0;
+    transform: scale(0.95); 
 }
 
 /* Lukitusnapit */
@@ -81,9 +95,21 @@ button[id^="lock"]:disabled {
     background-color: #ccc;
 }
 
+/* Pelin tilat ja voittotiedot */
 #status, #voitto {
-    text-align: center;
     font-size: 1.5em;
     margin-top: 20px;
     color: #333;
+}
+
+/* Panos-info */
+.infopanos {
+    display: block;
+    border: 5px solid seagreen;
+    border-radius: 25px;
+    width: 350px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin: 0 auto; 
 }
