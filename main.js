@@ -21,10 +21,16 @@ function pelaa() {
     lukittu = locked.some(state => state); // lukitus tarkistus
 
     // Pyörityksen aloitus
-    ["reel1", "reel2", "reel3", "reel4"].forEach((reel, index) => {
+    const spinPromises = ["reel1", "reel2", "reel3", "reel4"].map((reel, index) => {
         if (!locked[index]) {
-            spinReels(reel);
+            return spinReels(reel);
         }
+        return Promise.resolve(); // Jos rulla on lukittu, ei tarvitse pyörittää sitä
+    });
+
+    // Odota kaikkien pyöritysten loppumista ennen voiton tarkistamista
+    Promise.all(spinPromises).then(() => {
+        voittoTarkistus(); // Tarkista voitot pyöritysten jälkeen
     });
 
     // Resetoi lukitus
@@ -36,7 +42,7 @@ function pelaa() {
     } else {
         enableLockButtons();
     }
-    voittoTarkistus();
+
     document.getElementById("balance").innerHTML = raha;
 }
 
@@ -45,25 +51,27 @@ function spinReels(slot) {
     const spinTime = 1000;
     const startTime = Date.now();
 
-    function updateReels() {
-        const elapsedTime = Date.now() - startTime;
-        if (elapsedTime < spinTime) {
-            document.getElementById(slot).textContent = getRandomFruit();
-            requestAnimationFrame(updateReels);
-        } else {
-            if (!locked.some(state => state)) {
+    return new Promise(resolve => {
+        function updateReels() {
+            const elapsedTime = Date.now() - startTime;
+            if (elapsedTime < spinTime) {
                 document.getElementById(slot).textContent = getRandomFruit();
+                requestAnimationFrame(updateReels);
+            } else {
+                if (!locked.some(state => state)) {
+                    document.getElementById(slot).textContent = getRandomFruit();
+                }
+                resolve(); // Merkitse, että pyöritys on valmis
             }
         }
-    }
-    updateReels();
+        updateReels();
+    });
 }
 
 // Hae satunnainen hedelmä
 function getRandomFruit() {
     const fruits = ['🍎', '🍐', '🍒', '🍉', '7️⃣'];
     return fruits[Math.floor(Math.random() * fruits.length)];
-
 }
 
 // Lukitse rulla
@@ -92,6 +100,7 @@ function voittoTarkistus() {
         document.getElementById("reel3").innerText,
         document.getElementById("reel4").innerText
     ];
+    console.log(reels)
 
     if (reels.every(fruit => fruit === reels[0])) {
         let voittoraha = 0;
@@ -122,5 +131,3 @@ function enableLockButtons() {
         document.getElementById(`lock${i}`).disabled = false;
     }
 }
-
-
